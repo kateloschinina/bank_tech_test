@@ -3,7 +3,7 @@ require 'account'
 describe Account do
 
   let(:amount) { 1000 }
-  let(:initial_balance) { double :initial_balance }
+  let(:initial_balance) { 1500 }
 
   subject(:account) { described_class.new }
   subject(:account_with_balance) { described_class.new(initial_balance) }
@@ -30,6 +30,13 @@ describe Account do
     it "the account can be deposited" do
       account.deposit(amount)
       expect(account.get_balance).to eq(amount)
+    end
+  end
+
+  context "#withdraw" do
+    it "the account can be credited" do
+      account_with_balance.withdraw(amount)
+      expect(account_with_balance.get_balance).to eq(initial_balance - amount)
     end
   end
 end
