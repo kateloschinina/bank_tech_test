@@ -39,4 +39,19 @@ describe "Feature tests for User Stories" do
       expect { printer.print_statement }.to output(expected_output).to_stdout
     end
   end
+
+  context "User Story Four:" do
+    # As a client of a bank,
+    # So that I can focus on the latest transactions
+    # I want bank statement to show my transactions in reverse chronological order.
+
+    it "As a client of a bank, so that I can focus on the latest transactions I want bank statement to show my transactions in reverse chronological order." do
+      account = Account.new
+      account.deposit(1000)
+      account.withdraw(500)
+      printer = Printer.new(account.transactions_for_printing)
+      expected_output = "date       || credit  || debit   || balance\n#{Time.now.day}/#{Time.now.month}/#{Time.now.year}   ||         || 500     || 500\n#{Time.now.day}/#{Time.now.month}/#{Time.now.year}   || 1000    ||         || 1000\n"
+      expect { printer.print_statement }.to output(expected_output).to_stdout
+    end
+  end
 end
