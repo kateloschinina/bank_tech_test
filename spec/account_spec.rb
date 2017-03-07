@@ -26,10 +26,29 @@ describe Account do
     end
   end
 
+  context "#get_balance" do
+    it "provides account balance" do
+      expect(account_with_balance.get_balance).to eq(initial_balance)
+    end
+  end
+
+  context "#get_transactions" do
+    it "provides account transactions" do
+      expect(account_with_balance.get_transactions).to eq([])
+    end
+    # stub
+  end
+
   context "#deposit" do
     it "the account can be deposited" do
       account.deposit(amount)
       expect(account.get_balance).to eq(amount)
+    end
+    it "new transaction is added to the account" do
+      account.deposit(amount)
+      transactions = account.get_transactions
+      expect(transactions).to be_a(Array)
+      # stub
     end
   end
 
@@ -37,6 +56,18 @@ describe Account do
     it "the account can be credited" do
       account_with_balance.withdraw(amount)
       expect(account_with_balance.get_balance).to eq(initial_balance - amount)
+    end
+    it "new transaction is added to the account" do
+      account_with_balance.withdraw(amount)
+      transactions = account_with_balance.get_transactions
+      expect(transactions).to be_a(Array)
+      # stub
+    end
+  end
+
+  context "#transactions_for_printing" do
+    it "returns list of transactions ready to be printed" do
+      # stub
     end
   end
 end
