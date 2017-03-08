@@ -13,7 +13,8 @@ describe "Feature tests for User Stories" do
     end
   end
 
-  context "User Story Two:" do
+
+  context "User Srory Two:" do
     # As a client of a bank,
     # So that I can get some money from my bank account
     # I would like to be able to make a withdrawal from my account.

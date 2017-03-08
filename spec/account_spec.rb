@@ -79,4 +79,11 @@ describe Account do
       allow(Transaction).to recieve(:get_date).and_return(1)
     end
   end
+
+  context "#withdraw" do
+    it "the account can be credited" do
+      account_with_balance.withdraw(amount)
+      expect(account_with_balance.get_balance).to eq(initial_balance - amount)
+    end
+  end
 end

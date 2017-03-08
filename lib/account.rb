@@ -34,4 +34,8 @@ class Account
   def store_transaction(amount, balance)
     @transactions << Transaction.new(amount, balance)
   end
+
+  def withdraw(amount)
+    @balance -= amount
+  end
 end
