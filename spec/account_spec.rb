@@ -36,7 +36,13 @@ describe Account do
     it "provides account transactions" do
       expect(account_with_balance.get_transactions).to eq([])
     end
-    # stub
+    it "returns an array of transactions" do
+      account.deposit(amount)
+      transactions = account.get_transactions
+      expect(transactions).to be_a(Array)
+      expect(transactions.length).to eq(1)
+      expect(transactions.last).to be_a(Transaction)
+    end
   end
 
   context "#deposit" do
@@ -48,7 +54,8 @@ describe Account do
       account.deposit(amount)
       transactions = account.get_transactions
       expect(transactions).to be_a(Array)
-      # stub
+      expect(transactions.length).to eq(1)
+      expect(transactions.last).to be_a(Transaction)
     end
   end
 
@@ -61,13 +68,15 @@ describe Account do
       account_with_balance.withdraw(amount)
       transactions = account_with_balance.get_transactions
       expect(transactions).to be_a(Array)
-      # stub
+      expect(transactions.length).to eq(1)
+      expect(transactions.last).to be_a(Transaction)
     end
   end
 
   context "#transactions_for_printing" do
     it "returns list of transactions ready to be printed" do
-      # stub
+      2.times { account.deposit(amount) }
+      allow(Transaction).to recieve(:get_date).and_return(1)
     end
   end
 end
