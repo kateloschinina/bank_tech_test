@@ -11,7 +11,7 @@ class Transaction
 
   def get_date
     @date
-  end:
+  end
 
   def get_balance
     @balance

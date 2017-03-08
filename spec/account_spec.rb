@@ -76,7 +76,7 @@ describe Account do
   context "#transactions_for_printing" do
     it "returns list of transactions ready to be printed" do
       2.times { account.deposit(amount) }
-      allow(Transaction).to recieve(:get_date).and_return(1)
+      # allow(Transaction).to receive(:get_date).and_return(1)
     end
   end
 
